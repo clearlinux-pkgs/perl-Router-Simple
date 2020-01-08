@@ -4,7 +4,7 @@
 #
 Name     : perl-Router-Simple
 Version  : 0.17
-Release  : 10
+Release  : 11
 URL      : https://cpan.metacpan.org/authors/id/T/TO/TOKUHIROM/Router-Simple-0.17.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/T/TO/TOKUHIROM/Router-Simple-0.17.tar.gz
 Source1  : http://http.debian.net/debian/pool/main/libr/librouter-simple-perl/librouter-simple-perl_0.17-1.debian.tar.xz
@@ -12,6 +12,7 @@ Summary  : 'simple HTTP router'
 Group    : Development/Tools
 License  : Artistic-1.0 Artistic-1.0-Perl GPL-1.0
 Requires: perl-Router-Simple-license = %{version}-%{release}
+Requires: perl-Router-Simple-perl = %{version}-%{release}
 BuildRequires : buildreq-cpan
 
 %description
@@ -27,6 +28,7 @@ $router->connect('/blog/{year}/{month}', {controller => 'Blog', action => 'month
 Summary: dev components for the perl-Router-Simple package.
 Group: Development
 Provides: perl-Router-Simple-devel = %{version}-%{release}
+Requires: perl-Router-Simple = %{version}-%{release}
 
 %description dev
 dev components for the perl-Router-Simple package.
@@ -40,18 +42,28 @@ Group: Default
 license components for the perl-Router-Simple package.
 
 
+%package perl
+Summary: perl components for the perl-Router-Simple package.
+Group: Default
+Requires: perl-Router-Simple = %{version}-%{release}
+
+%description perl
+perl components for the perl-Router-Simple package.
+
+
 %prep
 %setup -q -n Router-Simple-0.17
-cd ..
-%setup -q -T -D -n Router-Simple-0.17 -b 1
+cd %{_builddir}
+tar xf %{_sourcedir}/librouter-simple-perl_0.17-1.debian.tar.xz
+cd %{_builddir}/Router-Simple-0.17
 mkdir -p deblicense/
-mv %{_topdir}/BUILD/debian/* %{_topdir}/BUILD/Router-Simple-0.17/deblicense/
+cp -r %{_builddir}/debian/* %{_builddir}/Router-Simple-0.17/deblicense/
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-export LANG=C
+export LANG=C.UTF-8
 if test -f Makefile.PL; then
 %{__perl} Makefile.PL
 make  %{?_smp_mflags}
@@ -63,7 +75,8 @@ fi
 %install
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/perl-Router-Simple
-cp LICENSE %{buildroot}/usr/share/package-licenses/perl-Router-Simple/LICENSE
+cp %{_builddir}/Router-Simple-0.17/LICENSE %{buildroot}/usr/share/package-licenses/perl-Router-Simple/39916610619ca187786c4836f46462487e0eea7d
+cp %{_builddir}/Router-Simple-0.17/deblicense/copyright %{buildroot}/usr/share/package-licenses/perl-Router-Simple/2f50f843052c546a8a41a027c49ae2a712873a03
 if test -f Makefile.PL; then
 make pure_install PERL_INSTALL_ROOT=%{buildroot} INSTALLDIRS=vendor
 else
@@ -76,11 +89,6 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 
 %files
 %defattr(-,root,root,-)
-/usr/lib/perl5/vendor_perl/5.28.2/Router/Simple.pm
-/usr/lib/perl5/vendor_perl/5.28.2/Router/Simple/Cookbook.pod
-/usr/lib/perl5/vendor_perl/5.28.2/Router/Simple/Declare.pm
-/usr/lib/perl5/vendor_perl/5.28.2/Router/Simple/Route.pm
-/usr/lib/perl5/vendor_perl/5.28.2/Router/Simple/SubMapper.pm
 
 %files dev
 %defattr(-,root,root,-)
@@ -92,4 +100,13 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 
 %files license
 %defattr(0644,root,root,0755)
-/usr/share/package-licenses/perl-Router-Simple/LICENSE
+/usr/share/package-licenses/perl-Router-Simple/2f50f843052c546a8a41a027c49ae2a712873a03
+/usr/share/package-licenses/perl-Router-Simple/39916610619ca187786c4836f46462487e0eea7d
+
+%files perl
+%defattr(-,root,root,-)
+/usr/lib/perl5/vendor_perl/5.30.1/Router/Simple.pm
+/usr/lib/perl5/vendor_perl/5.30.1/Router/Simple/Cookbook.pod
+/usr/lib/perl5/vendor_perl/5.30.1/Router/Simple/Declare.pm
+/usr/lib/perl5/vendor_perl/5.30.1/Router/Simple/Route.pm
+/usr/lib/perl5/vendor_perl/5.30.1/Router/Simple/SubMapper.pm
