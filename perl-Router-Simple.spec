@@ -4,7 +4,7 @@
 #
 Name     : perl-Router-Simple
 Version  : 0.17
-Release  : 11
+Release  : 12
 URL      : https://cpan.metacpan.org/authors/id/T/TO/TOKUHIROM/Router-Simple-0.17.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/T/TO/TOKUHIROM/Router-Simple-0.17.tar.gz
 Source1  : http://http.debian.net/debian/pool/main/libr/librouter-simple-perl/librouter-simple-perl_0.17-1.debian.tar.xz
@@ -76,7 +76,7 @@ fi
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/perl-Router-Simple
 cp %{_builddir}/Router-Simple-0.17/LICENSE %{buildroot}/usr/share/package-licenses/perl-Router-Simple/39916610619ca187786c4836f46462487e0eea7d
-cp %{_builddir}/Router-Simple-0.17/deblicense/copyright %{buildroot}/usr/share/package-licenses/perl-Router-Simple/2f50f843052c546a8a41a027c49ae2a712873a03
+cp %{_builddir}/debian/copyright %{buildroot}/usr/share/package-licenses/perl-Router-Simple/2f50f843052c546a8a41a027c49ae2a712873a03
 if test -f Makefile.PL; then
 make pure_install PERL_INSTALL_ROOT=%{buildroot} INSTALLDIRS=vendor
 else
@@ -105,8 +105,8 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 
 %files perl
 %defattr(-,root,root,-)
-/usr/lib/perl5/vendor_perl/5.30.1/Router/Simple.pm
-/usr/lib/perl5/vendor_perl/5.30.1/Router/Simple/Cookbook.pod
-/usr/lib/perl5/vendor_perl/5.30.1/Router/Simple/Declare.pm
-/usr/lib/perl5/vendor_perl/5.30.1/Router/Simple/Route.pm
-/usr/lib/perl5/vendor_perl/5.30.1/Router/Simple/SubMapper.pm
+/usr/lib/perl5/vendor_perl/5.30.2/Router/Simple.pm
+/usr/lib/perl5/vendor_perl/5.30.2/Router/Simple/Cookbook.pod
+/usr/lib/perl5/vendor_perl/5.30.2/Router/Simple/Declare.pm
+/usr/lib/perl5/vendor_perl/5.30.2/Router/Simple/Route.pm
+/usr/lib/perl5/vendor_perl/5.30.2/Router/Simple/SubMapper.pm
