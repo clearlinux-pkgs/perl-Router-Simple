@@ -105,8 +105,8 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 
 %files perl
 %defattr(-,root,root,-)
-/usr/lib/perl5/vendor_perl/5.32.1/Router/Simple.pm
-/usr/lib/perl5/vendor_perl/5.32.1/Router/Simple/Cookbook.pod
-/usr/lib/perl5/vendor_perl/5.32.1/Router/Simple/Declare.pm
-/usr/lib/perl5/vendor_perl/5.32.1/Router/Simple/Route.pm
-/usr/lib/perl5/vendor_perl/5.32.1/Router/Simple/SubMapper.pm
+/usr/lib/perl5/vendor_perl/5.34.0/Router/Simple.pm
+/usr/lib/perl5/vendor_perl/5.34.0/Router/Simple/Cookbook.pod
+/usr/lib/perl5/vendor_perl/5.34.0/Router/Simple/Declare.pm
+/usr/lib/perl5/vendor_perl/5.34.0/Router/Simple/Route.pm
+/usr/lib/perl5/vendor_perl/5.34.0/Router/Simple/SubMapper.pm
