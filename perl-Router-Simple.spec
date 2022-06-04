@@ -4,7 +4,7 @@
 #
 Name     : perl-Router-Simple
 Version  : 0.17
-Release  : 19
+Release  : 20
 URL      : https://cpan.metacpan.org/authors/id/T/TO/TOKUHIROM/Router-Simple-0.17.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/T/TO/TOKUHIROM/Router-Simple-0.17.tar.gz
 Source1  : http://http.debian.net/debian/pool/main/libr/librouter-simple-perl/librouter-simple-perl_0.17-1.debian.tar.xz
@@ -105,8 +105,4 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 
 %files perl
 %defattr(-,root,root,-)
-/usr/lib/perl5/vendor_perl/5.34.0/Router/Simple.pm
-/usr/lib/perl5/vendor_perl/5.34.0/Router/Simple/Cookbook.pod
-/usr/lib/perl5/vendor_perl/5.34.0/Router/Simple/Declare.pm
-/usr/lib/perl5/vendor_perl/5.34.0/Router/Simple/Route.pm
-/usr/lib/perl5/vendor_perl/5.34.0/Router/Simple/SubMapper.pm
+/usr/lib/perl5/*
